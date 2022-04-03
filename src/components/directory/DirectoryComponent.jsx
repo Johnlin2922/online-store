@@ -1,5 +1,5 @@
-import "./directory.styles.scss";
-import CategoryItem from "../category-item/category-item";
+import "./Directory.styles.scss";
+import CategoryItem from "../category-item/CategoryItemComponent";
 import HatsBackgroundImage from "../../assets/images/hats.png"
 import JacketsBackgroundImage from "../../assets/images/jackets.png";
 import MensBackgroundImage from "../../assets/images/mens.png";
