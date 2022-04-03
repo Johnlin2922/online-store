@@ -3,7 +3,6 @@ import "./CategoryItem.styles.scss";
 const CategoryItem = (props) => {
     const title = props.category.title; 
     const imageUrl = props.category.imageUrl;
-    const url = "src/assets/images/hats.png";
 
     return (
         <div className="category-container">
