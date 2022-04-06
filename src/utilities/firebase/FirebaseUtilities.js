@@ -3,8 +3,8 @@ import { initializeApp } from "firebase/app";
 import {
     getAuth,
     signInWithPopup,
-    GoogleAuthProvider, 
-    createUserWithEmailAndPassword
+    GoogleAuthProvider,
+    createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -36,8 +36,13 @@ export const signInWithGooglePopup = () => {
 
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth) => {
-    if(!userAuth) {return};
+export const createUserDocumentFromAuth = async (
+    userAuth,
+    additionalInformation = {}
+) => {
+    if (!userAuth) {
+        return;
+    }
     const userDocRef = doc(db, "users", userAuth.uid);
     console.log(userDocRef);
 
@@ -54,15 +59,18 @@ export const createUserDocumentFromAuth = async (userAuth) => {
                 displayName,
                 email,
                 createdAt,
-            });
+                ...additionalInformation, //if any of those fields is null, then the spread of additional Information may account for that. For example additionalInformation = {email: blah@gmail.com} for if Email is null
+            }); //Because of additionalInformation. if any of the fields are null inside of userAuth, we can pass it in separately
         } catch (error) {
-            console.log("error creating the user", error.message);
+            console.log("error creating the user fron Auth", error.message);
         }
     }
     return userDocRef;
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
-    if(!email || !password) {return}
-    createAuthUserWithEmailAndPassword(auth, email, password);
-}
+    if (!email || !password) {
+        return;
+    }
+    return createUserWithEmailAndPassword(auth, email, password);
+};
