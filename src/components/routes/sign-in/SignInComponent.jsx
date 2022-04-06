@@ -1,20 +1,40 @@
-import {signInWithGooglePopup, createUserDocumentFromAuth} from "../../../utilities/firebase/FirebaseUtilities"
+import { getRedirectResult } from "firebase/auth";
+import { useEffect } from "react";
+import {
+    signInWithGooglePopup,
+    createUserDocumentFromAuth,
+    signInWithGoogleRedirect,
+    auth
+} from "../../../utilities/firebase/FirebaseUtilities";
 
 const SignIn = () => {
 
-    const logGoogleUser = async () => {
-        const response = await signInWithGooglePopup();
-        const {user} = response; //split destructuring into 2 lines, more explicit
-        console.log("Sign in Component Response: ", response);
-        console.log("Sign in Component Response as JSOnN: ", JSON.stringify(response));
-        const userDocRef = await createUserDocumentFromAuth(user);
-    }
+    useEffect(async () => {
+        const response = await getRedirectResult(auth);
+        if(response){
+            const userDocRef = await createUserDocumentFromAuth(response.user);
+        }
+    })
 
-    return(<div>
-        <h1>
-            Sign In
-        </h1>
-        <button onClick={logGoogleUser}>Sign in with Google Popup</button>
-    </div>); 
-}
+    const logGooglePopUpUser = async () => {
+        const response = await signInWithGooglePopup();
+        const { user } = response; //split destructuring into 2 lines, more explicit
+       
+        const userDocRef = await createUserDocumentFromAuth(user);
+    };
+
+    const logGoogleRedirectUser = async () => {
+        const user = await signInWithGoogleRedirect();
+        console.log(user);
+        
+    };
+
+    return (
+        <div>
+            <h1>Sign In</h1>
+            <button onClick={logGooglePopUpUser}>Sign in with Google Popup</button>
+            <button onClick={logGoogleRedirectUser}>Sign in with Google Redirect</button>
+        </div>
+    );
+};
 export default SignIn;
