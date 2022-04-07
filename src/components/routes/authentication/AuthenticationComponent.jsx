@@ -4,8 +4,9 @@ import {
 } from "../../../utilities/firebase/FirebaseUtilities";
 import Button from "../../button/ButtonComponent";
 import SignUpForm from "../../sign-up-form/SignUpFormComponent";
+import SignInForm from "../../sign-in-form/SignInFormComponent";
 
-const SignIn = () => {
+const Authentication = () => {
     const logGooglePopUpUser = async () => {
         const response = await signInWithGooglePopup();
         const { user } = response; //split destructuring into 2 lines, more explicit
@@ -17,12 +18,9 @@ const SignIn = () => {
         <div>
             <h1>Sign In</h1>
 
-            <Button onClick={logGooglePopUpUser} buttonType="google">
-                Sign in with Google Popup
-            </Button>
-
+            <SignInForm/>
             <SignUpForm />
         </div>
     );
 };
-export default SignIn;
+export default Authentication;
