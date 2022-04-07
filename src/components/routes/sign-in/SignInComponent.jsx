@@ -2,7 +2,7 @@ import {
     signInWithGooglePopup,
     createUserDocumentFromAuth,
 } from "../../../utilities/firebase/FirebaseUtilities";
-import Button, { BUTTON_TYPE_CLASSES } from "../../button/ButtonComponent";
+import Button from "../../button/ButtonComponent";
 import SignUpForm from "../../sign-up-form/SignUpFormComponent";
 
 const SignIn = () => {

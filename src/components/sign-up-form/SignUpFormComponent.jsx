@@ -2,7 +2,7 @@ import {createAuthUserWithEmailAndPassword, createUserDocumentFromAuth} from "..
 import { useState } from "react";
 import FormInput from "../form-input/FormInputComponent";
 import "./SignUpForm.styles.scss";
-import Button, { BUTTON_TYPE_CLASSES } from "../button/ButtonComponent";
+import Button from "../button/ButtonComponent";
 
 const defaultFormFields = {
     displayName: "",
