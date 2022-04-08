@@ -25,10 +25,17 @@ const SignInForm = () => {
             resetFormFields();
             console.log("Response: ", response);
         } catch (error){
-            if(error.code === "auth/email-already-in-use"){
-                alert("Cannot create user, Email already in use");
+            switch(error.code){
+                case "auth/wrong-password": 
+                    alert("Email or Password incorrect");
+                    break;
+                case "auth/user-not-found":
+                    alert("Email or Password incorrect");
+                    break;
+                default:
+                    break;
             }
-            console.log("User Creation encountered an error: ", error);
+            console.log("User Login encountered an error: ", error);
         }
 
     }
@@ -77,7 +84,7 @@ const SignInForm = () => {
                 <div className="buttons-container">
                     <Button onClick={handleForgotPassword} buttonType="inverted">Forgot Password</Button>
                     <Button type="submit" buttonType="inverted">Sign In</Button>
-                    <Button onClick={SignInWithGoogle} buttonType="google">
+                    <Button type="button" onClick={SignInWithGoogle} buttonType="google">
                         Sign in with Google
                     </Button>
                 </div>
