@@ -17,7 +17,6 @@ const Authentication = () => {
     return (
         <div>
             <h1>Sign In</h1>
-
             <SignInForm/>
             <SignUpForm />
         </div>

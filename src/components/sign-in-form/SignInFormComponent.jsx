@@ -1,4 +1,4 @@
-import {createUserDocumentFromAuth, signInWithGooglePopup} from "../../utilities/firebase/FirebaseUtilities";
+import {createUserDocumentFromAuth, signInWithGooglePopup, signInAuthUserWithEmailAndPassword} from "../../utilities/firebase/FirebaseUtilities";
 import { useState } from "react";
 import FormInput from "../form-input/FormInputComponent";
 import "./SignInForm.styles.scss";
@@ -20,6 +20,17 @@ const SignInForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        try{
+            const response = await signInAuthUserWithEmailAndPassword(email, password);
+            resetFormFields();
+            console.log("Response: ", response);
+        } catch (error){
+            if(error.code === "auth/email-already-in-use"){
+                alert("Cannot create user, Email already in use");
+            }
+            console.log("User Creation encountered an error: ", error);
+        }
+
     }
 
     const SignInWithGoogle = async () => {
@@ -30,7 +41,12 @@ const SignInForm = () => {
     };
 
     const handleForgotPassword = () => {
+        //ToDo, Johnny Come Back and Support this feature :), Johnny from April 7,2022
         alert("Forgot Password feature not supported yet");
+    }
+
+    const resetFormFields = () => {
+        setFormFields(defaultFormFields);
     }
 
     return (
