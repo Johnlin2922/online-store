@@ -12,7 +12,7 @@ const Navigation = () => {
     const context = useContext(UserContext);
     const { currentUser } = context; //2 lines because its more explicit. Can destructure in future projects.
 
-    const {isCartOpen, setIsCartOpen} = useContext(CartContext);
+    const {isCartOpen} = useContext(CartContext);
 
     return (
         <Fragment>
