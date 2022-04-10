@@ -1,5 +1,5 @@
 import "./Directory.styles.scss";
-import CategoryItem from "../category-item/CategoryItemComponent";
+import DirectoryItem from "../directory-item/DirectoryItemComponent";
 import HatsBackgroundImage from "../../assets/images/hats.png"
 import JacketsBackgroundImage from "../../assets/images/jackets.png";
 import MensBackgroundImage from "../../assets/images/mens.png";
@@ -39,7 +39,7 @@ const Directory = () => {
         <div className="directory-container">
             {categories.map((category) => {
                 return (
-                    <CategoryItem key={category.id} category={category}/>
+                    <DirectoryItem key={category.id} category={category}/>
                 );
             })}
         </div>

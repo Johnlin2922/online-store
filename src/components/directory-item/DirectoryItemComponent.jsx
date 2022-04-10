@@ -1,16 +1,16 @@
-import "./CategoryItem.styles.scss";
+import "./DirectoryItem.styles.scss";
 
 const CategoryItem = (props) => {
     const title = props.category.title; 
     const imageUrl = props.category.imageUrl;
 
     return (
-        <div className="category-container">
+        <div className="directory-item-container">
             <div
                 className="background-image"
                 style={{ backgroundImage: `url(${imageUrl})` }}
             ></div>
-            <div className="category-body-container">
+            <div className="body">
                 <h2>{title}</h2>
                 <p>Shop Now</p>
             </div>
