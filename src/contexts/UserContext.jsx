@@ -23,7 +23,7 @@ const UserProvider = (props) => {
         // return unsubscribe; //return value from useEffect is called on unmount. This is how we do it in functional components.
 
         const unsubscribe = onAuthStateChangedListener((user) => {
-            console.log(user);
+            console.log(user.providerData);
             if(user){
                 createUserDocumentFromAuth(user);
             }
