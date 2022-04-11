@@ -41,4 +41,12 @@ const UserProvider = (props) => {
     );
 };
 
+
+const userReducer = () => {
+    return {
+        currentUser: null
+    }
+}
+
+
 export { UserContext, UserProvider };

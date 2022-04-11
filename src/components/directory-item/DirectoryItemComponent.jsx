@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./DirectoryItem.styles.scss";
 
 const CategoryItem = (props) => {
@@ -11,8 +12,10 @@ const CategoryItem = (props) => {
                 style={{ backgroundImage: `url(${imageUrl})` }}
             ></div>
             <div className="body">
-                <h2>{title}</h2>
-                <p>Shop Now</p>
+                <Link to={"/shop/" + title}>
+                    <h2>{title.charAt(0).toUpperCase() + title.slice(1)}</h2>
+                    <p>Shop Now</p>
+                </Link>
             </div>
         </div>
     );
