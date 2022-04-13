@@ -19,7 +19,7 @@ const Category = () => {
 
     return (
         <div className="category-container">
-            {products && products.map((product) => <ProductCard product={product}/>)}
+            {products && products.map((product) => <ProductCard product={product} key={product.id}/>)}
         </div>
     );
 }
