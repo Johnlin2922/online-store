@@ -1,8 +1,7 @@
 import { createContext, useEffect, useReducer } from "react";
 import {
     createUserDocumentFromAuth,
-    onAuthStateChangedListener,
-    signOutUser,
+    onAuthStateChangedListener
 } from "../utilities/firebase/FirebaseUtilities";
 
 //Actual storage things

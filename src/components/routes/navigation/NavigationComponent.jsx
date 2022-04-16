@@ -7,10 +7,15 @@ import { CartContext } from "../../../contexts/CartContext";
 import { signOutUser } from "../../../utilities/firebase/FirebaseUtilities";
 import CartIcon from "../../cart-icon/CartIconComponent";
 import CartDropdown from "../../cart-dropdown/CartDropdownComponent";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../../store/user/userSelector";
 
 const Navigation = () => {
-    const context = useContext(UserContext);
-    const { currentUser } = context; //2 lines because its more explicit. Can destructure in future projects.
+    //const context = useContext(UserContext);
+    //const { currentUser } = context; //2 lines because its more explicit. Can destructure in future projects.
+
+    const currentUser = useSelector(selectCurrentUser);
+    
 
     const {isCartOpen} = useContext(CartContext);
 
