@@ -16,8 +16,8 @@ import {
     setDoc,
     collection,
     writeBatch,
-    query, 
-    getDocs
+    query,
+    getDocs,
 } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -48,7 +48,10 @@ export const signInWithGooglePopup = () => {
 
 export const db = getFirestore();
 
-export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+export const addCollectionAndDocuments = async (
+    collectionKey,
+    objectsToAdd
+) => {
     const collectionRef = collection(db, collectionKey);
     const batch = writeBatch(db);
 
@@ -59,7 +62,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 
     await batch.commit();
     console.log("Batch Commit Finished");
-}
+};
 
 export const getCategoriesAndDocuments = async () => {
     const collectionRef = collection(db, "categories");
@@ -67,10 +70,12 @@ export const getCategoriesAndDocuments = async () => {
 
     const querySnapshot = await getDocs(q);
 
-    const categoryMap = querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+    const categoryMap = querySnapshot.docs.map((docSnapshot) =>
+        docSnapshot.data()
+    );
 
     return categoryMap;
-}
+};
 
 export const createUserDocumentFromAuth = async (
     userAuth,
