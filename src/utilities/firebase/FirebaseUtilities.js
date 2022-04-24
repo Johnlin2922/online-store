@@ -74,6 +74,8 @@ export const getCategoriesAndDocuments = async () => {
         docSnapshot.data()
     );
 
+    console.log("FirebaseUtils ", categoryMap);
+
     return categoryMap;
 };
 
