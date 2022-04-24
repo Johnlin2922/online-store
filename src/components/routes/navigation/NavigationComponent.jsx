@@ -1,22 +1,20 @@
 import { Link, Outlet } from "react-router-dom";
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import "./navigation.styles.scss";
 import { ReactComponent as CrwnLogo } from "../../../assets/logos/crown.svg";
-import { CartContext } from "../../../contexts/CartContext";
 import { signOutUser } from "../../../utilities/firebase/FirebaseUtilities";
 import CartIcon from "../../cart-icon/CartIconComponent";
 import CartDropdown from "../../cart-dropdown/CartDropdownComponent";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../../store/user/userSelector";
+import { selectIsCartOpen } from "../../../store/cart/cartSelector"
 
 const Navigation = () => {
     //const context = useContext(UserContext);
     //const { currentUser } = context; //2 lines because its more explicit. Can destructure in future projects.
 
     const currentUser = useSelector(selectCurrentUser);
-    
-
-    const {isCartOpen} = useContext(CartContext);
+    const isCartOpen = useSelector(selectIsCartOpen);
 
     return (
         <Fragment>

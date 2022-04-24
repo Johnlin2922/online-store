@@ -1,16 +1,19 @@
 import "./ProductCard.styles.scss";
 import Button from "../button/ButtonComponent";
-import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../store/cart/cartActions";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cartSelector";
 
 const ProductCard = ({product}) => {
 
-    const {addItemToCart} = useContext(CartContext);
+    const cartItems = useSelector(selectCartItems);
+    const dispatch = useDispatch();
     const { name, price, imageUrl } = product;
 
 
     const addProductToCart = () => {
-        addItemToCart(product);
+        dispatch(addItemToCart(cartItems, product));
     }
 
     return (
@@ -26,3 +29,6 @@ const ProductCard = ({product}) => {
     );
 };
 export default ProductCard;
+
+
+
