@@ -1,3 +1,9 @@
+/*
+
+this Context is current not being used. I am keeping it around for reference only
+
+*/
+
 import { createContext, useState, useEffect } from "react";
 
 const getNewCartStateAdd = (cartItems, productToAdd) => {

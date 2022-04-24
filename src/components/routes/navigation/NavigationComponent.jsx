@@ -10,9 +10,7 @@ import { selectCurrentUser } from "../../../store/user/userSelector";
 import { selectIsCartOpen } from "../../../store/cart/cartSelector"
 
 const Navigation = () => {
-    //const context = useContext(UserContext);
-    //const { currentUser } = context; //2 lines because its more explicit. Can destructure in future projects.
-
+ 
     const currentUser = useSelector(selectCurrentUser);
     const isCartOpen = useSelector(selectIsCartOpen);
 

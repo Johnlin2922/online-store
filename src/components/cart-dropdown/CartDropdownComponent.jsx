@@ -10,8 +10,6 @@ const CartDropdown = () => {
     const navigate = useNavigate();
     const cartItems = useSelector(selectCartItems);
 
-    console.log(cartItems);
-
     const toCheckoutHandler = () => {
         navigate("/checkout");
     }
