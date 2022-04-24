@@ -1,11 +1,13 @@
 import { Cart_Action_Types } from "./cartActionTypes";
+import {persistReducer} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 export const Cart_Initial_State = {
     isCartOpen: false,
     cartItems: [],
 };
 
-export const cartReducer = (state = Cart_Initial_State, action = {}) => {
+export const reducer = (state = Cart_Initial_State, action = {}) => {
     const { type, payload } = action;
 
     switch (type) {
@@ -17,3 +19,11 @@ export const cartReducer = (state = Cart_Initial_State, action = {}) => {
             return state;
     }
 };
+
+const persistConfig = {
+    key: "cart", 
+    storage: storage, 
+    blacklist: ['isCartOpen']
+}
+
+export const cartReducer = persistReducer(persistConfig, reducer);

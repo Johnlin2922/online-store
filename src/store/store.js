@@ -9,7 +9,7 @@ import { rootReducer } from "./rootReducer";
 const persistConfig = {
     key: "root", 
     storage: storage, 
-    blacklist: ['user']
+    blacklist: ['user', 'cart']
 }//blacklist user becuase its coming from authstatelistener anyway
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
